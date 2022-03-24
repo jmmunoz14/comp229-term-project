@@ -7,11 +7,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 function App() {
 
   //attributes
- 
-  //eventHandlers
-  function onClick() {
-    console.log('here')
-  }
+
+
 
 
 
@@ -19,12 +16,15 @@ function App() {
   return (
     <Router>
       <Header />
+
       <Routes>
+
         <Route
           path='/'
-          element={<Content onClick={onClick} />} />
+          element={<Content />} />
 
       </Routes>
+
       <Footer />
     </Router>
   )

@@ -1,14 +1,15 @@
 import CreateSurvey from "./CreateSurvey";
 import SurveyList from "./SurveyList";
 
-const Content = ({ onClick }) => {
+const Content = ({ }) => {
 
 
     return (
 
         <div className="container ">
+
             <div className="flexbox-container-btn-row">
-                <button className="btn" onClick={onClick}> Create</button>
+                <button className="btn"  > Create</button>
                 <button className="btn"> Surveys</button>
                 <button className="btn"> Analytics</button>
             </div>
@@ -19,7 +20,7 @@ const Content = ({ onClick }) => {
 
             {/*LIST ALL SURVEYS*/}
             <SurveyList />
- 
+
 
         </div>
     );

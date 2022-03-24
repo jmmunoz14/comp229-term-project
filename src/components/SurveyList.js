@@ -1,27 +1,47 @@
 import SurveyElement from "./SurveyElement";
+import { useState, useEffect } from 'react'
+
+
 const SurveyList = () => {
 
-    const data = [{
-        id: 1,
-        titlle: 'Survey Sample title 1',
-    },
-    {
-        id: 2,
-        titlle: 'Survey Sample title 2',
-    },
-    {
-        id: 3,
-        titlle: 'Survey Sample title 3 ',
-    }]
+    const [surveyData, setSurveyData] = useState([])
 
+    // Fetch surveysData
+    const surveysData = async () => {
+        const res = await fetch('http://localhost:4000/surveys')
+        const data = await res.json()
 
-    for (let e in data) {
-
+        return data
     }
+
+    
+    useEffect(() => {
+        const getTasks = async () => {
+          const dataFromServer = await surveysData()
+          setSurveyData(dataFromServer)
+        }
+    
+        getTasks()
+      }, [])
+      //console.log(surveyData)
+
+ 
+
+
 
     return (
         <div>
-            hello
+            <h2>Surveys</h2>
+            {surveyData.map((dataElement) => {
+
+                return (
+
+                    <div className="element" key={dataElement.id} >
+                        <SurveyElement title={dataElement.title} id={dataElement.id} />
+                    </div>
+                )
+
+            })}
         </div>
     )
 }
