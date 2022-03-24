@@ -1,6 +1,6 @@
 import './App.css';
 import Header from './components/Header';
-import Body from './components/Body'
+import Content from './components/Content'
 import Footer from './components/Footer'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
@@ -22,7 +22,7 @@ function App() {
       <Routes>
         <Route
           path='/'
-          element={<Body onClick={onClick} />} />
+          element={<Content onClick={onClick} />} />
 
       </Routes>
       <Footer />

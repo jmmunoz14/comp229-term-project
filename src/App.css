@@ -11,11 +11,11 @@ body {
 }
 
 .container {
-  max-width: 500px;
+  max-width: 93%;
   margin: 30px auto;
   overflow: auto;
-  min-height: 300px;
-  border: 1px solid steelblue;
+  min-height: 400px;
+  border: 1px solid rgb(174, 174, 174);
   padding: 30px;
   border-radius: 5px;
 }
@@ -61,18 +61,18 @@ body {
   width: 100%;
 }
 
-.task {
+.element {
   background: #f4f4f4;
   margin: 5px;
   padding: 10px 20px;
   cursor: pointer;
 }
 
-.task.reminder {
+.element.reminder {
   border-left: 5px solid green;
 }
 
-.task h3 {
+.element h3 {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -161,4 +161,11 @@ body {
 footer {
   margin-top: 30px;
   text-align: center;
+}
+
+.flexbox-container-btn-row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
 }
