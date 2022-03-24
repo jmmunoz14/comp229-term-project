@@ -1,53 +1,70 @@
 import React, { useState, useRef, useEffect } from 'react'
 import RadioButton from './RadioButton'
+const { v4: uuidv4 } = require('uuid')
+
 
 
 const CreateSurvey = () => {
 
-    //attributes
-    let formData = {
-        surveyTitle: '',
+    const initializeSurveyFromType = {
+        id: null,
+        surveyTitle: 'Survey title goes here',
         surveyType: {
             agreeDisagree: false,
-            multipleChoice: false,
+            multipleChoise: false,
         }
     }
 
-    const [value, setValue] = useState(false)
+    const [surveyFormType, setSurveyFormType] = useState(initializeSurveyFromType)
+
+
     function handleChange() {
-        setValue(!value)
+        alert('here')
+    }
+    function submitSurvey() {
+        let surveyTitleField = document.getElementById('surveyTitleFieldId')
+        let agreeDisagreeRadioButton = document.getElementById('agreeDisagreeRadioButtonId')
+        let multipleChoiseRadioButton = document.getElementById('multipleChoiseRadioButtonId')
+
+        alert('submitting')
+
+
+        setSurveyFormType({
+            id: uuidv4(),
+            surveyTitle: surveyTitleField.value,
+            surveyType: {
+                agreeDisagree: agreeDisagreeRadioButton.value,
+                multipleChoise: multipleChoiseRadioButton.value,
+            }
+        })
+
+        console.log(surveyFormType)
     }
 
     return (
         <form className="add-form">
             <h2>Create Survey</h2>
             <div className="element">
-                <div>
-                    <label>
-                        Name:
-                        <input type="text" name="name" placeholder='Survey Title' />
-                    </label>
+                <input id='surveyTitleFieldId' type="text" name="name" placeholder={surveyFormType.surveyTitle} />
+
+                <p>Survey type:</p>
+                <div className="radio-button" id='agreeDisagreeRadioButtonId'>
+                    <RadioButton
+                        label="Agree / Disagree"
+                        value={surveyFormType.surveyType.agreeDisagree}
+                        onChange={handleChange}
+                    />
                 </div>
-
-                <div className="radio">
-                    <div className="radio-button">
- 
-                        <RadioButton
-                            label="Agree / Disagree"
-                            value={value}
-                            onChange={handleChange}
-                        />
-                        <RadioButton
-                            label="Multiple Choice"
-                            value={value}
-                            onChange={handleChange}
-                        />
-
-                    </div>
+                <div className="radio-button" id='multipleChoiseRadioButtonId'>
+                    <RadioButton
+                        label="Multiple Choice"
+                        value={surveyFormType.surveyType.multipleChoise}
+                        onChange={handleChange}
+                    />
                 </div>
             </div>
-            <button className="btn" onClick={submitButtonOnClick}>Submit</button>
-            <button className="btn" onClick={cancelButtonOnClick}>Cancel</button>
+            <button className="btn" onClick={submitSurvey}>Submit</button>
+            <button className="btn">Cancel</button>
         </form>
 
     );
