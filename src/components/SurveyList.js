@@ -16,24 +16,18 @@ const SurveyList = () => {
 
     
     useEffect(() => {
-        const getTasks = async () => {
+        const getSurveys = async () => {
           const dataFromServer = await surveysData()
           setSurveyData(dataFromServer)
         }
     
-        getTasks()
+        getSurveys()
       }, [])
-      //console.log(surveyData)
-
- 
-
-
 
     return (
         <div>
             <h2>Surveys</h2>
             {surveyData.map((dataElement) => {
-
                 return (
 
                     <div className="element" key={dataElement.id} >

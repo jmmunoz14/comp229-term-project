@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef } from 'react'
 import RadioButton from './RadioButton'
 const { v4: uuidv4 } = require('uuid')
 
@@ -6,7 +6,8 @@ const { v4: uuidv4 } = require('uuid')
 
 const CreateSurvey = () => {
 
-    const initializeSurveyFromType = {
+    //attributes
+    const initialValues = {
         id: null,
         surveyTitle: 'Survey title goes here',
         surveyType: {
@@ -15,70 +16,93 @@ const CreateSurvey = () => {
         }
     }
 
-    const [surveyFormType, setSurveyFormType] = useState(initializeSurveyFromType)
+    //Hooks => useState useRef
+    const [surveyForm, setSurveyForm] = useState(initialValues)
+    const surveyTitleFieldRef = useRef()
+    const agreeDisagreeRadioButtonRef = useRef()
+    const multipleChoiceRadioButtonRef = useRef()
 
 
-    function handleChange() {
-        alert('here')
+    //functions - onChanges
+    function onChangeSurveyTitle() {
+        const surveyTitleValue = surveyTitleFieldRef.current.value
+        let data = surveyForm //this (surveyForm) is immutable
+
+        data.surveyTitle = surveyTitleValue
+        //console.log(data)
+        setSurveyForm(data)
     }
-    function submitSurvey() {
-        let surveyTitleField = document.getElementById('surveyTitleFieldId')
-        let agreeDisagreeRadioButton = document.getElementById('agreeDisagreeRadioButtonId')
-        let multipleChoiseRadioButton = document.getElementById('multipleChoiseRadioButtonId')
 
+    function onChangesRadioButton() {
+        const agreeDisagreeValue = agreeDisagreeRadioButtonRef.current.checked
+        const multipleChoiceValue = multipleChoiceRadioButtonRef.current.checked
+        let dataPreprocessing = surveyForm //this (surveyForm) is immutable
+        
+        //console.log(dataPreprocessing)
+        
+        if (agreeDisagreeValue) {
+            dataPreprocessing.surveyType.agreeDisagree = true
+            dataPreprocessing.surveyType.multipleChoise = false
+            setSurveyForm(dataPreprocessing)
+        }
+        
+        if (multipleChoiceValue) {
+            dataPreprocessing.surveyType.agreeDisagree = false
+            dataPreprocessing.surveyType.multipleChoise = true
+            setSurveyForm(dataPreprocessing)
+        }
+    }
+    
+    
+    function onSubmitSurvey() {
         alert('submitting')
-
-
-        setSurveyFormType({
-            id: uuidv4(),
-            surveyTitle: surveyTitleField.value,
-            surveyType: {
-                agreeDisagree: agreeDisagreeRadioButton.value,
-                multipleChoise: multipleChoiseRadioButton.value,
-            }
-        })
-
-        console.log(surveyFormType)
+        let dataPreprocessing = surveyForm //this (surveyForm) is immutable
+        dataPreprocessing.id = uuidv4()
+        
+        console.log(dataPreprocessing)
+        setSurveyForm(dataPreprocessing)
     }
 
+    //return
     return (
         <form className="add-form">
             <h2>Create Survey</h2>
             <div className="element">
-                <input id='surveyTitleFieldId' type="text" name="name" placeholder={surveyFormType.surveyTitle} />
+
+                <input type="text"
+                    name="name"
+                    ref={surveyTitleFieldRef}
+                    placeholder={surveyForm.surveyTitle}
+                    onChange={onChangeSurveyTitle}
+                />
 
                 <p>Survey type:</p>
-                <div className="radio-button" id='agreeDisagreeRadioButtonId'>
-                    <RadioButton
-                        label="Agree / Disagree"
-                        value={surveyFormType.surveyType.agreeDisagree}
-                        onChange={handleChange}
+                <label>
+                    <input type="radio"
+                        className="radio-button"
+                        name="name"
+                        ref={agreeDisagreeRadioButtonRef}
+                        onChange={onChangesRadioButton}
                     />
-                </div>
-                <div className="radio-button" id='multipleChoiseRadioButtonId'>
-                    <RadioButton
-                        label="Multiple Choice"
-                        value={surveyFormType.surveyType.multipleChoise}
-                        onChange={handleChange}
+                    Multiple Choice
+                </label>
+                <label>
+                    <input type="radio"
+                        className="radio-button"
+                        name="name"
+                        ref={multipleChoiceRadioButtonRef}
+                        onChange={onChangesRadioButton}
                     />
-                </div>
+                    Agree or Disagree
+                </label>
+
             </div>
-            <button className="btn" onClick={submitSurvey}>Submit</button>
+
+            <button className="btn" onClick={onSubmitSurvey}>Submit</button>
             <button className="btn">Cancel</button>
         </form>
 
     );
-
-
-
-    function submitButtonOnClick(e) {
-        console.log(e)
-    }
-
-    function cancelButtonOnClick(e) {
-        console.log(e)
-    }
-
 
 }
 
