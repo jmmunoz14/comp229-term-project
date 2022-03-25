@@ -169,3 +169,13 @@ footer {
   align-items: center;
   align-content: center;
 }
+
+.flexbox-container-multiple-choice {
+  display: inline-flex;
+  flex-direction: column;
+   
+}
+
+.form-element{
+  padding: 10px;
+}

@@ -37,28 +37,28 @@ const CreateSurvey = () => {
         const agreeDisagreeValue = agreeDisagreeRadioButtonRef.current.checked
         const multipleChoiceValue = multipleChoiceRadioButtonRef.current.checked
         let dataPreprocessing = surveyForm //this (surveyForm) is immutable
-        
+
         //console.log(dataPreprocessing)
-        
+
         if (agreeDisagreeValue) {
             dataPreprocessing.surveyType.agreeDisagree = true
             dataPreprocessing.surveyType.multipleChoise = false
             setSurveyForm(dataPreprocessing)
         }
-        
+
         if (multipleChoiceValue) {
             dataPreprocessing.surveyType.agreeDisagree = false
             dataPreprocessing.surveyType.multipleChoise = true
             setSurveyForm(dataPreprocessing)
         }
     }
-    
-    
+
+
     function onSubmitSurvey() {
         alert('submitting')
         let dataPreprocessing = surveyForm //this (surveyForm) is immutable
         dataPreprocessing.id = uuidv4()
-        
+
         console.log(dataPreprocessing)
         setSurveyForm(dataPreprocessing)
     }
@@ -69,32 +69,38 @@ const CreateSurvey = () => {
             <h2>Create Survey</h2>
             <div className="element">
 
-                <input type="text"
-                    name="name"
-                    ref={surveyTitleFieldRef}
-                    placeholder={surveyForm.surveyTitle}
-                    onChange={onChangeSurveyTitle}
-                />
+                <div className='form-element'>
+                    <p>Survey title</p>
+                    <input type="text"
+                        name="name"
+                        ref={surveyTitleFieldRef}
+                        placeholder={surveyForm.surveyTitle}
+                        onChange={onChangeSurveyTitle}
+                    />
+                </div>
 
-                <p>Survey type:</p>
-                <label>
-                    <input type="radio"
-                        className="radio-button"
-                        name="name"
-                        ref={agreeDisagreeRadioButtonRef}
-                        onChange={onChangesRadioButton}
-                    />
-                    Multiple Choice
-                </label>
-                <label>
-                    <input type="radio"
-                        className="radio-button"
-                        name="name"
-                        ref={multipleChoiceRadioButtonRef}
-                        onChange={onChangesRadioButton}
-                    />
-                    Agree or Disagree
-                </label>
+                <div className='form-element'>
+                    <p>Survey type</p>
+                    <div className='flexbox-container-multiple-choice'>
+                        <label>
+                            <input type="radio"
+                                className="radio-button"
+                                name="name"
+                                ref={agreeDisagreeRadioButtonRef}
+                                onChange={onChangesRadioButton}
+                            />Multiple Choice
+                        </label>
+                        <label>
+                            <input type="radio"
+                                className="radio-button"
+                                name="name"
+                                ref={multipleChoiceRadioButtonRef}
+                                onChange={onChangesRadioButton}
+                            />
+                            Agree or Disagree
+                        </label>
+                    </div>
+                </div>
 
             </div>
 
