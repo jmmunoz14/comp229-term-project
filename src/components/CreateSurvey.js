@@ -1,5 +1,4 @@
 import React, { useState, useRef } from 'react'
-import RadioButton from './RadioButton'
 const { v4: uuidv4 } = require('uuid')
 
 
@@ -16,8 +15,10 @@ const CreateSurvey = () => {
         }
     }
 
-    //Hooks => useState useRef
+    //Hooks => useState  
     const [surveyForm, setSurveyForm] = useState(initialValues)
+
+    //Hooks => useRef
     const surveyTitleFieldRef = useRef()
     const agreeDisagreeRadioButtonRef = useRef()
     const multipleChoiceRadioButtonRef = useRef()
@@ -54,13 +55,21 @@ const CreateSurvey = () => {
     }
 
 
-    function onSubmitSurvey() {
-        alert('submitting')
+    async function onSubmitSurvey() {
+        //alert('submitting')
         let dataPreprocessing = surveyForm //this (surveyForm) is immutable
         dataPreprocessing.id = uuidv4()
 
         console.log(dataPreprocessing)
         setSurveyForm(dataPreprocessing)
+
+        await fetch('http://localhost:4000/surveys', {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(surveyForm)
+        })
     }
 
     //return

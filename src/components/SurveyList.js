@@ -11,18 +11,19 @@ const SurveyList = () => {
         const res = await fetch('http://localhost:4000/surveys')
         const data = await res.json()
 
+        console.log(data)
         return data
     }
 
-    
+
     useEffect(() => {
         const getSurveys = async () => {
-          const dataFromServer = await surveysData()
-          setSurveyData(dataFromServer)
+            const dataFromServer = await surveysData()
+            setSurveyData(dataFromServer)
         }
-    
+
         getSurveys()
-      }, [])
+    }, [])
 
     return (
         <div>
@@ -31,7 +32,7 @@ const SurveyList = () => {
                 return (
 
                     <div className="element" key={dataElement.id} >
-                        <SurveyElement title={dataElement.title} id={dataElement.id} />
+                        <SurveyElement surveyTitle={dataElement.surveyTitle} id={dataElement.id} />
                     </div>
                 )
 
