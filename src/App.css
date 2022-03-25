@@ -48,6 +48,22 @@ body {
   font-family: inherit;
 }
 
+.btn-back {
+  display: block;
+  width: 100%;
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: inherit;
+}
+
+
 .btn:focus {
   outline: none;
 }
@@ -180,4 +196,15 @@ footer {
   padding: 10px;
 }
 
- 
+.flexbox-container-img-btn {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.img {
+  max-width:50%;
+  height:auto;
+}

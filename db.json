@@ -1,51 +1,43 @@
 {
   "surveys": [
     {
-      "id": "83cd165f-0551-477f-9552-0f3f510d9f5e",
-      "surveyTitle": "This is my sample title 3",
+      "id": "2be45e93-0563-4e14-b8c0-4ceb99ab99d4",
+      "surveyTitle": "Sample survey 1",
       "surveyType": {
         "agreeDisagree": true,
         "multipleChoise": false
       }
     },
     {
-      "id": "f7d978f1-6316-44db-bb7c-7c34f24f83c7",
-      "surveyTitle": "this is another test",
-      "surveyType": {
-        "agreeDisagree": true,
-        "multipleChoise": false
-      }
-    },
-    {
-      "id": "07f75537-9216-4a7f-9b93-270c3153f9ed",
-      "surveyTitle": "titanic is good?",
-      "surveyType": {
-        "agreeDisagree": true,
-        "multipleChoise": false
-      }
-    },
-    {
-      "id": "c9de020f-112b-44e9-a4b4-cfd84ecd5dff",
-      "surveyTitle": "centennial college is awesoma",
+      "id": "45f8f56e-c08d-4af7-8e24-a951f4318616",
+      "surveyTitle": "sample survey 2",
       "surveyType": {
         "agreeDisagree": false,
         "multipleChoise": true
       }
     },
     {
-      "id": "96c20e5d-a182-43f2-b516-0b57e56152a7",
-      "surveyTitle": "another good movie",
+      "id": "9db76a14-a660-4d56-a370-b533600a4ba4",
+      "surveyTitle": "🍁 another survey",
       "surveyType": {
         "agreeDisagree": true,
         "multipleChoise": false
       }
     },
     {
-      "id": "0b738049-3e0d-4e0a-88b0-86fcb1b7f454",
-      "surveyTitle": "this is an awesome text",
+      "id": "bc548bee-72da-4dea-868d-50f2747d3eed",
+      "surveyTitle": "this is a test",
       "surveyType": {
-        "agreeDisagree": true,
-        "multipleChoise": false
+        "agreeDisagree": false,
+        "multipleChoise": true
+      }
+    },
+    {
+      "id": "a1bbbda8-777f-4cf7-bd41-8462e44453cb",
+      "surveyTitle": "Centennial Test",
+      "surveyType": {
+        "agreeDisagree": false,
+        "multipleChoise": true
       }
     }
   ]

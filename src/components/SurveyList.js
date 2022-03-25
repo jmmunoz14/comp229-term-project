@@ -1,10 +1,13 @@
-import SurveyElement from "./SurveyElement";
+import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react'
+import SurveyElement from "./SurveyElement";
 
 
 const SurveyList = () => {
 
     const [surveyData, setSurveyData] = useState([])
+    //Hooks => useNavigate
+    const navigate = useNavigate();
 
     // Fetch surveysData
     const surveysData = async () => {
@@ -26,17 +29,18 @@ const SurveyList = () => {
     }, [])
 
     return (
-        <div>
+        <div className="container">
             <h2>Surveys</h2>
             {surveyData.map((dataElement) => {
                 return (
-
                     <div className="element" key={dataElement.id} >
                         <SurveyElement surveyTitle={dataElement.surveyTitle} id={dataElement.id} />
                     </div>
                 )
 
             })}
+            <button className="btn-back" onClick={() => { navigate('/') }}> Back </button>
+
         </div>
     )
 }
