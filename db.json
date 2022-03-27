@@ -1,43 +1,19 @@
 {
   "surveys": [
     {
-      "id": "2be45e93-0563-4e14-b8c0-4ceb99ab99d4",
-      "surveyTitle": "Sample survey 1",
+      "id": "fb0c8fb1-e5f3-445c-be7d-d7ff44405244",
+      "surveyTitle": "AD - Survey Sample",
+      "surveyType": {
+        "agreeDisagree": false,
+        "multipleChoice": true
+      }
+    },
+    {
+      "id": "126e63d7-dbfa-4b16-ae93-e42ebfbf2d21",
+      "surveyTitle": "⭐ Twinkle litte star",
       "surveyType": {
         "agreeDisagree": true,
-        "multipleChoise": false
-      }
-    },
-    {
-      "id": "45f8f56e-c08d-4af7-8e24-a951f4318616",
-      "surveyTitle": "sample survey 2",
-      "surveyType": {
-        "agreeDisagree": false,
-        "multipleChoise": true
-      }
-    },
-    {
-      "id": "9db76a14-a660-4d56-a370-b533600a4ba4",
-      "surveyTitle": "🍁 another survey",
-      "surveyType": {
-        "agreeDisagree": true,
-        "multipleChoise": false
-      }
-    },
-    {
-      "id": "bc548bee-72da-4dea-868d-50f2747d3eed",
-      "surveyTitle": "this is a test",
-      "surveyType": {
-        "agreeDisagree": false,
-        "multipleChoise": true
-      }
-    },
-    {
-      "id": "a1bbbda8-777f-4cf7-bd41-8462e44453cb",
-      "surveyTitle": "Centennial Test",
-      "surveyType": {
-        "agreeDisagree": false,
-        "multipleChoise": true
+        "multipleChoice": false
       }
     }
   ]

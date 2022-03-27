@@ -13,7 +13,7 @@ const CreateSurvey = () => {
         surveyTitle: 'Survey title goes here',
         surveyType: {
             agreeDisagree: false,
-            multipleChoise: false,
+            multipleChoice: false,
         }
     }
 
@@ -45,13 +45,13 @@ const CreateSurvey = () => {
 
         if (agreeDisagreeValue) {
             dataPreprocessing.surveyType.agreeDisagree = true
-            dataPreprocessing.surveyType.multipleChoise = false
+            dataPreprocessing.surveyType.multipleChoice = false
             setSurveyForm(dataPreprocessing)
         }
 
         if (multipleChoiceValue) {
             dataPreprocessing.surveyType.agreeDisagree = false
-            dataPreprocessing.surveyType.multipleChoise = true
+            dataPreprocessing.surveyType.multipleChoice = true
             setSurveyForm(dataPreprocessing)
         }
     }

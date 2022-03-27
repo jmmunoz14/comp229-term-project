@@ -34,13 +34,16 @@ const SurveyList = () => {
             {surveyData.map((dataElement) => {
                 return (
                     <div className="element" key={dataElement.id} >
-                        <SurveyElement surveyTitle={dataElement.surveyTitle} id={dataElement.id} />
+                        <SurveyElement 
+                        surveyTitle={dataElement.surveyTitle} 
+                        id={dataElement.id}
+                        surveyType={dataElement.surveyType}
+                         />
                     </div>
                 )
 
             })}
             <button className="btn-back" onClick={() => { navigate('/') }}> Back </button>
-
         </div>
     )
 }

@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-const Content = ({ }) => {
+const Home = ({ }) => {
 
     // window.location.href="/createSurvey"
     //Hooks => useNavigate
@@ -8,7 +8,6 @@ const Content = ({ }) => {
 
     return (
         <div className="container ">
-
             <div className="flexbox-container-btn-row">
 
                 <div className='flexbox-container-img-btn'>
@@ -20,7 +19,7 @@ const Content = ({ }) => {
 
                 <div className='flexbox-container-img-btn'>
                     <img className='img' src={require('./dummy-image.jpg')} />
-                    <button className="btn" onClick={() => { navigate('/surveys') }}> Surveys</button>
+                    <button className="btn" onClick={() => { navigate('/surveys') }}> Survey</button>
                 </div>
 
                 <div className='flexbox-container-img-btn'>
@@ -30,7 +29,7 @@ const Content = ({ }) => {
 
             </div>
         </div>
-    );
+    )
 }
 
-export default Content;
+export default Home;
