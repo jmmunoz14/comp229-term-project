@@ -15,6 +15,22 @@
         "agreeDisagree": true,
         "multipleChoice": false
       }
+    },
+    {
+      "id": "e0b01676-49d7-4e2b-afb5-fd49bd4f535f",
+      "surveyTitle": "Ivan is Awesome",
+      "surveyType": {
+        "agreeDisagree": false,
+        "multipleChoice": true
+      }
+    },
+    {
+      "id": "20210e94-0f1e-4276-93c5-728a6b57035b",
+      "surveyTitle": "vernon is the best",
+      "surveyType": {
+        "agreeDisagree": true,
+        "multipleChoice": false
+      }
     }
   ]
 }
