@@ -1,4 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
+
 
 
 export default function EditSurveyAgreeDisagree({ surveyTitle, id }) {
@@ -12,6 +14,7 @@ export default function EditSurveyAgreeDisagree({ surveyTitle, id }) {
     const [questionCount, setQuestionCount] = useState(0);
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [buttonVisibility, setButtonVisibility] = useState(true);
+    const navigate = useNavigate()
 
     useEffect(() => {
         setQuestionCount(questionCount);
@@ -37,7 +40,9 @@ export default function EditSurveyAgreeDisagree({ surveyTitle, id }) {
                     questionId: i,
                     question: questionField.value,
                 }
+
                 setQuestion(arr => [...arr, newQuestion]);
+
                 //alert(`Successfully added Question ${i + 1} to Survey`)
             }
 
@@ -64,6 +69,23 @@ export default function EditSurveyAgreeDisagree({ surveyTitle, id }) {
         }
 
         setQuestionCount(() => numOfQuestions);
+    }
+
+    //onProcessForm
+    function onProcessForm() {
+        let dataPreprocessing = question //this (surveyForm) is immutable
+ 
+        console.log(dataPreprocessing)
+ 
+        // fetch('http://localhost:4000/surveys', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-type': 'application/json'
+        //     },
+        //     body: JSON.stringify(surveyForm)
+        // })
+
+        navigate('/surveys')
     }
 
     return (
@@ -108,7 +130,7 @@ export default function EditSurveyAgreeDisagree({ surveyTitle, id }) {
 
                     </div>
                     <div>
-                        <button className='btn'>submit</button>
+                        <button className='btn' onClick={onProcessForm}>submit</button>
                     </div>
                 </div>
             }
