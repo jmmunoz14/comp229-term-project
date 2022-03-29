@@ -5,11 +5,13 @@ export default function EditSurveyAgreeDisagree({ surveyTitle, id }) {
 
 
     //set max quzntity to  10 question
+    const MAX_QUESTIONS = 10
 
     //Hooks => useState  
     const [question, setQuestion] = useState([]);
     const [questionCount, setQuestionCount] = useState(0);
     const [currentQuestion, setCurrentQuestion] = useState(0);
+    const [buttonVisibility, setButtonVisibility] = useState(true);
 
     useEffect(() => {
         setQuestionCount(questionCount);
@@ -17,23 +19,26 @@ export default function EditSurveyAgreeDisagree({ surveyTitle, id }) {
 
     // helper function
     let createQuestionSet = (containerId, numOfQuestions) => {
-        for (let i = 0; i<numOfQuestions; i++) {
+
+        for (let i = 0; i < numOfQuestions; i++) {
+
+            //html
             let questionPrompt = document.createElement("p");
             let questionField = document.createElement("input");
             let questionSaveButton = document.createElement("button");
-            let nodeText = document.createTextNode(`Question ${i+1}`);
+            let nodeText = document.createTextNode(`Question ${i + 1}`);
 
             questionPrompt.setAttribute("id", `prompt${i}`);
             questionField.setAttribute("id", `field${i}`);
             questionSaveButton.setAttribute("id", `saveBtn${i}`);
 
-            questionSaveButton.onclick = function() {
+            questionSaveButton.onclick = function () {
                 let newQuestion = {
                     questionId: i,
                     question: questionField.value,
                 }
                 setQuestion(arr => [...arr, newQuestion]);
-                alert(`Successfully added Question ${i+1} to Survey`)
+                //alert(`Successfully added Question ${i + 1} to Survey`)
             }
 
             questionPrompt.appendChild(nodeText);
@@ -47,15 +52,14 @@ export default function EditSurveyAgreeDisagree({ surveyTitle, id }) {
 
     //when click on add append to the array
     function renderQuestionSet() {
+
         let numOfQuestions = parseInt(document.getElementById("numOfQuestions").value);
         let questionContainer = document.getElementById("questionContainer");
 
-        if (numOfQuestions <= 0) {
-            alert("Please enter at least 1 (or more) questions");
-        } else if (numOfQuestions > 10) { 
-            alert("You have inputted too many questions. Please enter a maximum of 10 questions")
-        } else {
-            // refer to helper function above
+        //alert(numOfQuestions)
+
+        if (numOfQuestions > 0 && numOfQuestions <= MAX_QUESTIONS) {
+            setButtonVisibility(false)
             createQuestionSet(questionContainer, numOfQuestions);
         }
 
@@ -66,32 +70,48 @@ export default function EditSurveyAgreeDisagree({ surveyTitle, id }) {
 
         <div className='container'>
             <h1>{surveyTitle}</h1>
-            <p>{id}</p>
-            <p>Input # of Questions</p>
-            <label><input id="numOfQuestions" type="text"  /></label>            
-            <button className='btn' onClick={renderQuestionSet}>Add</button>
+            {/* <p>{id}</p> */}
 
-            <div id="questionContainer">
-            </div>
+            {buttonVisibility &&
+                <div>
+                    <p>Input # of Questions</p>
+                    <label><input
+                        id="numOfQuestions"
+                        type="number"
+                        className='form-element'
 
-            <div>
-                Question Count: {questionCount}
-            </div>
-            <div className="" id="currentQuestionSet">
-                List of Questions: 
-                {question.map((q, index) => {
-                    return (
-                        <div key={index}>
-                        Question {q.questionId+1}: {q.question}
-                        </div>
-                    )
-                })}
-            </div>
-            <div>
-                <button className='btn'>submit</button>
-            </div>
+                    /></label>
+
+                    <button
+                        className='btn'
+                        onClick={renderQuestionSet}>Add</button>
+                </div>
+            }
+
+            <div id="questionContainer"></div>
+
+            {!buttonVisibility &&
+
+                <div>
+                    Question Count: {questionCount}
+
+                    <div className="" id="currentQuestionSet">
+                        List of Questions:
+
+                        {question.map((q, index) => {
+                            return (
+                                <div key={index}>
+                                    Question {q.questionId + 1}: {q.question}
+                                </div>
+                            )
+                        })}
+
+                    </div>
+                    <div>
+                        <button className='btn'>submit</button>
+                    </div>
+                </div>
+            }
         </div>
-
-
     );
 }
