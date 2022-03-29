@@ -15,7 +15,7 @@ export default function EditSurveyView() {
       {location.state.surveyType.agreeDisagree &&
         <EditSurveyAgreeDisagree
           surveyTitle={location.state.surveyTitle}
-          id={location.state.id}
+          surveyId={location.state.id}
         />
       }
 
@@ -23,7 +23,7 @@ export default function EditSurveyView() {
       {location.state.surveyType.multipleChoice &&
         <EditSurveyAgreeDisagree
           surveyTitle={location.state.surveyTitle}
-          id={location.state.id}
+          surveyId={location.state.id}
         />
       }
 

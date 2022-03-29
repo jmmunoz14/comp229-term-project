@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-export default function EditSurveyAgreeDisagree({ surveyTitle, id }) {
+export default function EditSurveyAgreeDisagree({ surveyTitle, surveyId }) {
 
 
     //set max quzntity to  10 question
@@ -73,17 +73,21 @@ export default function EditSurveyAgreeDisagree({ surveyTitle, id }) {
 
     //onProcessForm
     function onProcessForm() {
-        let dataPreprocessing = question //this (surveyForm) is immutable
- 
-        console.log(dataPreprocessing)
- 
-        // fetch('http://localhost:4000/surveys', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-type': 'application/json'
-        //     },
-        //     body: JSON.stringify(surveyForm)
-        // })
+
+        let toSend = {
+            surveyId: surveyId,
+            questions: question
+        }
+
+        console.log(toSend)
+
+        fetch('http://localhost:4000/questions', {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(toSend)
+        })
 
         navigate('/surveys')
     }
@@ -101,12 +105,12 @@ export default function EditSurveyAgreeDisagree({ surveyTitle, id }) {
                         id="numOfQuestions"
                         type="number"
                         className='form-element'
-
                     /></label>
 
                     <button
                         className='btn'
-                        onClick={renderQuestionSet}>Add</button>
+                        onClick={renderQuestionSet}>Add
+                    </button>
                 </div>
             }
 
@@ -117,16 +121,18 @@ export default function EditSurveyAgreeDisagree({ surveyTitle, id }) {
                 <div>
                     Question Count: {questionCount}
 
-                    <div className="" id="currentQuestionSet">
+                    <div id="currentQuestionSet">
                         List of Questions:
 
-                        {question.map((q, index) => {
-                            return (
-                                <div key={index}>
-                                    Question {q.questionId + 1}: {q.question}
-                                </div>
-                            )
-                        })}
+                        {
+                            question.map((q, index) => {
+                                return (
+                                    <div key={index}>
+                                        Question {q.questionId + 1}: {q.question}
+                                    </div>
+                                )
+                            })
+                        }
 
                     </div>
                     <div>

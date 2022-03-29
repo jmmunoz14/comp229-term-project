@@ -1,12 +1,4 @@
 {
-  "surveys": [
-    {
-      "id": "fb5b6bf8-df79-4fb3-9224-24570190ac93",
-      "surveyTitle": "is Canada awesome?",
-      "surveyType": {
-        "agreeDisagree": false,
-        "multipleChoice": true
-      }
-    }
-  ]
+  "surveys":  [],
+  "questions": []
 }
