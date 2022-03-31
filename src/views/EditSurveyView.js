@@ -21,10 +21,9 @@ export default function EditSurveyView() {
 
       {/* conditional rendering */}
       {location.state.surveyType.multipleChoice &&
-        <EditSurveyAgreeDisagree
-          surveyTitle={location.state.surveyTitle}
-          surveyId={location.state.id}
-        />
+         <div>
+           renderizar multiple choice
+         </div>
       }
 
     </div>

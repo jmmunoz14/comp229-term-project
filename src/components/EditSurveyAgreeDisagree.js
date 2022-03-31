@@ -74,6 +74,25 @@ export default function EditSurveyAgreeDisagree({ surveyTitle, surveyId }) {
     //onProcessForm
     function onProcessForm() {
 
+
+        let arr = question
+
+
+        for (let e in arr){
+
+
+            fetch('http://localhost:4000/questions', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify(e)
+            })
+
+        }
+
+
+
         let toSend = {
             surveyId: surveyId,
             questions: question
