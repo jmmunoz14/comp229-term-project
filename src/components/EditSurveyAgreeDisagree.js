@@ -1,47 +1,164 @@
 import React, { useState, useRef, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 
-const EditSurveyAgreeDisagree = ({ surveyTitle, id }) => {
+
+export default function EditSurveyAgreeDisagree({ surveyTitle, surveyId }) {
 
 
     //set max quzntity to  10 question
-
-    const questionRef = useRef()
+    const MAX_QUESTIONS = 10
 
     //Hooks => useState  
-    const [question, setQuestion] = useState([])
-    const [counter, setCounter] = useState(0)
+    const [question, setQuestion] = useState([]);
+    const [questionCount, setQuestionCount] = useState(0);
+    const [currentQuestion, setCurrentQuestion] = useState(0);
+    const [buttonVisibility, setButtonVisibility] = useState(true);
+    const navigate = useNavigate()
 
     useEffect(() => {
-  
-    }, [question])
+        setQuestionCount(questionCount);
+    }, [questionCount])
 
+    // helper function
+    let createQuestionSet = (containerId, numOfQuestions) => {
 
-//when click on add append to the array
-    function renderNewQuestion() {
+        for (let i = 0; i < numOfQuestions; i++) {
 
-        
+            //html
+            let questionPrompt = document.createElement("p");
+            let questionField = document.createElement("input");
+            let questionSaveButton = document.createElement("button");
+            let nodeText = document.createTextNode(`Question ${i + 1}`);
+
+            questionPrompt.setAttribute("id", `prompt${i}`);
+            questionField.setAttribute("id", `field${i}`);
+            questionSaveButton.setAttribute("id", `saveBtn${i}`);
+
+            questionSaveButton.onclick = function () {
+                let newQuestion = {
+                    questionId: i,
+                    question: questionField.value,
+                }
+
+                setQuestion(arr => [...arr, newQuestion]);
+
+                //alert(`Successfully added Question ${i + 1} to Survey`)
+            }
+
+            questionPrompt.appendChild(nodeText);
+            questionSaveButton.appendChild(document.createTextNode("Save Question"));
+
+            containerId.appendChild(questionPrompt);
+            containerId.appendChild(questionField);
+            containerId.appendChild(questionSaveButton)
+        }
     }
 
+    //when click on add append to the array
+    function renderQuestionSet() {
+
+        let numOfQuestions = parseInt(document.getElementById("numOfQuestions").value);
+        let questionContainer = document.getElementById("questionContainer");
+
+        //alert(numOfQuestions)
+
+        if (numOfQuestions > 0 && numOfQuestions <= MAX_QUESTIONS) {
+            setButtonVisibility(false)
+            createQuestionSet(questionContainer, numOfQuestions);
+        }
+
+        setQuestionCount(() => numOfQuestions);
+    }
+
+    //onProcessForm
+    function onProcessForm() {
+
+
+        let arr = question
+
+
+        for (let e in arr){
+
+
+            fetch('http://localhost:4000/questions', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify(e)
+            })
+
+        }
+
+
+
+        let toSend = {
+            surveyId: surveyId,
+            questions: question
+        }
+
+        console.log(toSend)
+
+        fetch('http://localhost:4000/questions', {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(toSend)
+        })
+
+        navigate('/surveys')
+    }
 
     return (
 
-        <div>
-            <button onClick={renderNewQuestion}>Add</button>
+        <div className='container'>
+            <h1>{surveyTitle}</h1>
+            {/* <p>{id}</p> */}
 
-            <p>Question </p>
-            <label><input type="text"  /></label>
+            {buttonVisibility &&
+                <div>
+                    <p>Input # of Questions</p>
+                    <label><input
+                        id="numOfQuestions"
+                        type="number"
+                        className='form-element'
+                    /></label>
 
+                    <button
+                        className='btn'
+                        onClick={renderQuestionSet}>Add
+                    </button>
+                </div>
+            }
 
+            <div id="questionContainer"></div>
 
+            {!buttonVisibility &&
 
-            <div>
-                <button>submit</button>
-            </div>
+                <div>
+                    Question Count: {questionCount}
+
+                    <div id="currentQuestionSet">
+                        List of Questions:
+
+                        {
+                            question.map((q, index) => {
+                                return (
+                                    <div key={index}>
+                                        Question {q.questionId + 1}: {q.question}
+                                    </div>
+                                )
+                            })
+                        }
+
+                    </div>
+                    <div>
+                        <button className='btn' onClick={onProcessForm}>submit</button>
+                    </div>
+                </div>
+            }
         </div>
-
-
     );
 }
-
-export default EditSurveyAgreeDisagree;
