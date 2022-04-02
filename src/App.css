@@ -63,6 +63,31 @@ body {
   font-family: inherit;
 }
 
+button {
+  -webkit-appearance: button;
+  -webkit-writing-mode: horizontal-tb !important;
+  text-rendering: auto;
+  color: #fff;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: center;
+  align-items: flex-start;
+  cursor: default;
+  background-color: #696969;
+  box-sizing: border-box;
+  margin: 0em;
+  font: 400 11px system-ui;
+  padding: 1px 7px 2px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(216, 216, 216) rgb(209, 209, 209) rgb(186, 186, 186);
+  border-image: initial;
+}
+
 
 .btn:focus {
   outline: none;
@@ -203,6 +228,71 @@ footer {
   align-items: center;
   align-content: center;
 }
+
+input[type="text"],
+input[type="password"]{
+  padding-left: 15px;
+  height: 25px;
+  margin: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+input[type="email"] {
+  padding-left: 15px;
+  height: 25px;
+  margin: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.login-container {
+  padding: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.buttonLog{
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  background: #4daf52;
+  border: 1px solid #009b15;
+  color: #fff;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+}
+.signupBtn{
+  border: #009b15;
+  border-width: 10px;
+}
+
+.buttonLog:hover {
+  background: #000;
+  color: #ffffff;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 10px;
+}
+
+.login-form {
+  background-color: white;
+  padding: 2rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 
 .img {
   max-width:50%;
