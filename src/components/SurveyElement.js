@@ -6,7 +6,7 @@ const SurveyElement = ({ surveyTitle, id, surveyType }) => {
     const navigate = useNavigate();
 
     let takeSurvey = () => {
-        alert(`the id is: ${id}`)
+        navigate('/surveys/' + id)
     }
 
     //redirect → /editSurvey with { state: { surveyTitle, id, surveyType } }
