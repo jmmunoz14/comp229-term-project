@@ -48,9 +48,12 @@ const SurveyDetails = () => {
 
         axios.post("http://surveymeanbackend.herokuapp.com/answer/attend/" + id, requestBody)
             .then(response => {
-                console.log(response)
+                alert("Thank you for your answers!")
+                window.location.replace("/surveys");
+
             })
             .catch(error => {
+                alert(error)
                 console.log(error)
             })
 
