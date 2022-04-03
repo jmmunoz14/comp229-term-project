@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom';
-import MultipleChoice from '../components/formMultipleChoice';
+import MultipleChoice from '../components/FormMultipleChoice';
 
 
 export default function AnalyticsView() {

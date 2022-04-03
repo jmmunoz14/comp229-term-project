@@ -57,17 +57,19 @@ const MultipleChoice = ({ surveyTitle, surveyId }) => {
     }
 
     return (
-        <div>
+        <div className='container'>
             <h1>{surveyTitle}</h1>
             <h3>{surveyId}</h3>
-            <form>
-                <label> Question  <input onChange={onChange} ref={questionField} type="text"></input> </label>
-                <label> Option A  <input onChange={onChange} ref={optionAField} type="text"></input> </label>
-                <label> Option B  <input onChange={onChange} ref={optionBField} type="text"></input> </label>
-                <label> Option C  <input onChange={onChange} ref={optionCField} type="text"></input> </label>
+            <form className="add-form" id="idFormMultipleChoice">
+                <label className='form-element'> Question  <input onChange={onChange} ref={questionField} type="text"></input> </label>
+                <label className='element'> Option A  <input onChange={onChange} ref={optionAField} type="text"></input> </label>
+                <label className='element'> Option B  <input onChange={onChange} ref={optionBField} type="text"></input> </label>
+                <label className="element"> Option C  <input onChange={onChange} ref={optionCField} type="text"></input> </label>
             </form>
-            <button className="btn" type='button' onClick={onSave}>Save Question</button>
-            <button className="btn" type='button' onClick={() => { navigate('/surveys') }}>Cancel</button>
+            <div>
+                <button className="btn" type='button' onClick={onSave}>Save</button>
+                <button className="btn" type='button' onClick={() => { navigate('/surveys') }}>Cancel</button>
+            </div>
         </div>
     );
 

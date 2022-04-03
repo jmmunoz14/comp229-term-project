@@ -2,9 +2,13 @@ import React, { useState } from 'react';
 import Auth from '../components/Auth'
 import axios from 'axios';
 import { Alert } from 'bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 
 export const SignupView = () => {
+    const navigate = useNavigate();
+
+
 
     const emptyForm = {
         username: '',
@@ -35,12 +39,8 @@ export const SignupView = () => {
             // send a POST request
             axios.post('https://surveymeanbackend.herokuapp.com/users/signup', form)
                 .then(response => {
-
-                    console.log(response)
-                    if (response.success == true) {
-                        alert("Success")
-                        window.location.replace("/login");
-
+                    if (response.status === 200) {
+                        navigate("/login")
                     }
                 })
                 .catch(error => {
@@ -50,58 +50,46 @@ export const SignupView = () => {
         else {
             alert("Passwords do not match")
         }
-
     }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit} className="main-block login-container" >
-                <div className="form-group">
-                    <label>Username:</label>
-                    <input type="text" name="username" className="form-element"
-                        onChange={handleChange}
-                        required />
+        <div className='container'>
+            <form onSubmit={handleSubmit}>
+                <table className='center'>
+                    <tbody>
+                        <tr>
+                            <td><label>Username:</label></td>
+                            <td><input type="text" name="username" className="form-element" onChange={handleChange} required /></td>
+                        </tr>
+                        <tr>
+                            <td><label>E-mail:</label></td>
+                            <td><input type="email" name="email" className="form-control" onChange={handleChange} required /></td>
+                        </tr>
+                        <tr>
+                            <td><label>Password:</label></td>
+                            <td><input type="password" name="password" className="form-control" onChange={handleChange} required /></td>
+                        </tr>
+                        <tr>
+                            <td><label>Confirm Password:</label></td>
+                            <td><input type="password" name="confirmPassword" className="form-control" onChange={(e) => setConfirmPassword(e.target.value)} required /></td>
+                        </tr>
+                        <tr>
+                            <td><label>First Name:</label></td>
+                            <td><input type="text" name="firstName" className="form-control"
+                                onChange={handleChange}
+                                required /></td>
+                        </tr>
+                        <tr>
+                            <td><label>Last Name:</label></td>
+                            <td><input type="text" name="lastName" className="form-control"
+                                onChange={handleChange}
+                                required /></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div className='register-btn-flexbox-container'>
+                    <button type='submit' className="btn">Register</button>
                 </div>
-                <div className="form-group">
-                    <label>E-mail:</label>
-                    <input type="email" name="email" className="form-control"
-                        onChange={handleChange}
-                        required />
-                </div>
-                <div className="form-group">
-                    <label>Password:</label>
-                    <input type="password" name="password" className="form-control"
-                        onChange={handleChange}
-                        required />
-                </div>
-                <div className="form-group">
-                    <label>Confirm Password:</label>
-                    <input type="password" name="confirmPassword" className="form-control"
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                        required />
-                </div>
-                <div className="form-group">
-                    <label>First Name:</label>
-                    <input type="text" name="firstName" className="form-control"
-                        onChange={handleChange}
-                        required />
-                </div>
-
-                <div className="form-group">
-                    <label>Last Name:</label>
-                    <input type="text" name="lastName" className="form-control"
-                        onChange={handleChange}
-                        required />
-                </div>
-
-
-                <div className="form-group">
-                    {/* <button type='submit' className="submitButton buttonLog"> */}
-                    <button type='submit' className="btn">
-                        Register
-                    </button>
-                </div>
-
             </form>
         </div>
     );

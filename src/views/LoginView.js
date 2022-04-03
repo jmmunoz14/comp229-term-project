@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Auth from '../components/Auth'
 import axios from 'axios';
 
+
 export const LoginView = () => {
 
 
@@ -43,30 +44,28 @@ export const LoginView = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit} action="#" className='container'>
-            <div className="form-group">
-                <label>Username:</label>
-                <input type="text" name="username" className="form-control"
-                    onChange={handleChange}
-                    required />
-            </div>
-            <div className="form-group">
-                <label>Password:</label>
-                <input type="password" name="password" className="form-control"
-                    onChange={handleChange}
-                    required />
-            </div>
-            <button type='submit' className="btn">
-                Login
-            </button>
-            <div className="form-group signupBtn">
-                <a href="/signup">
-                    Sign-up
-                </a>
-            </div>
-        </form>
+        <div className='container'>
+            <form onSubmit={handleSubmit}>
+                <table className='center'>
+                    <tbody>
+                        <tr>
+                            <label>Username </label>
+                            <input type="text" name="username" className="form-control"
+                                onChange={handleChange}
+                                required />
+                        </tr>
+                        <tr>
+                            <label>Password</label>
+                            <input type="password" name="password" className="form-control"
+                                onChange={handleChange}
+                                required />
+                        </tr>
+                    </tbody>
+                </table>
+                <div className='register-btn-flexbox-container'> <button type='submit' className="btn">Login</button></div>
+                <div className='register-btn-flexbox-container'><a href="/signup"> Sign-up </a></div>
+            </form>
+        </div>
     )
-
-
 }
 
