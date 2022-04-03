@@ -51,7 +51,7 @@ const SurveyList = () => {
                 )
 
             })}
-            <button className="btn-back" onClick={() => { navigate('/') }}> Back </button>
+            <button className="btn" onClick={() => { navigate('/') }}> Back </button>
         </div>
     )
 }
