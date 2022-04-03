@@ -1,6 +1,6 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import SurveyElement from "./SurveyElement";
+import SurveyElement from "./SurveyElement"
 
 
 const SurveyList = () => {
