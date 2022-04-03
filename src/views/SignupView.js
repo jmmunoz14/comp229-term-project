@@ -22,14 +22,15 @@ export const SignupView = () => {
         const value = evt.target.value;
 
         setForm({
-            ...form,
-            [evt.target.name]: value
+            ...form, [evt.target.name]: value
         });
+
         console.log(form)
     }
 
     const handleSubmit = (event) => {
         event.preventDefault()
+
         if (form.password == confirmPassword) {
             // send a POST request
             axios.post('https://surveymeanbackend.herokuapp.com/users/signup', form)
@@ -52,55 +53,57 @@ export const SignupView = () => {
 
     }
 
-    return (<div>
-        <form onSubmit={handleSubmit} className="main-block login-container" >
-            <div className="form-group">
-                <label>Username:</label>
-                <input type="text" name="username" className="form-control"
-                    onChange={handleChange}
-                    required />
-            </div>
-            <div className="form-group">
-                <label>E-mail:</label>
-                <input type="email" name="email" className="form-control"
-                    onChange={handleChange}
-                    required />
-            </div>
-            <div className="form-group">
-                <label>Password:</label>
-                <input type="password" name="password" className="form-control"
-                    onChange={handleChange}
-                    required />
-            </div>
-            <div className="form-group">
-                <label>Confirm Password:</label>
-                <input type="password" name="confirmPassword" className="form-control"
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    required />
-            </div>
-            <div className="form-group">
-                <label>First Name:</label>
-                <input type="text" name="firstName" className="form-control"
-                    onChange={handleChange}
-                    required />
-            </div>
+    return (
+        <div>
+            <form onSubmit={handleSubmit} className="main-block login-container" >
+                <div className="form-group">
+                    <label>Username:</label>
+                    <input type="text" name="username" className="form-element"
+                        onChange={handleChange}
+                        required />
+                </div>
+                <div className="form-group">
+                    <label>E-mail:</label>
+                    <input type="email" name="email" className="form-control"
+                        onChange={handleChange}
+                        required />
+                </div>
+                <div className="form-group">
+                    <label>Password:</label>
+                    <input type="password" name="password" className="form-control"
+                        onChange={handleChange}
+                        required />
+                </div>
+                <div className="form-group">
+                    <label>Confirm Password:</label>
+                    <input type="password" name="confirmPassword" className="form-control"
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        required />
+                </div>
+                <div className="form-group">
+                    <label>First Name:</label>
+                    <input type="text" name="firstName" className="form-control"
+                        onChange={handleChange}
+                        required />
+                </div>
 
-            <div className="form-group">
-                <label>Last Name:</label>
-                <input type="text" name="lastName" className="form-control"
-                    onChange={handleChange}
-                    required />
-            </div>
+                <div className="form-group">
+                    <label>Last Name:</label>
+                    <input type="text" name="lastName" className="form-control"
+                        onChange={handleChange}
+                        required />
+                </div>
 
 
-            <div className="form-group">
-                <button type='submit' className="submitButton buttonLog">
-                    Register
-                </button>
-            </div>
+                <div className="form-group">
+                    {/* <button type='submit' className="submitButton buttonLog"> */}
+                    <button type='submit' className="btn">
+                        Register
+                    </button>
+                </div>
 
-        </form>
-
-    </div>);
+            </form>
+        </div>
+    );
 
 }

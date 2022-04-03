@@ -66,7 +66,7 @@ const SurveyDetails = () => {
 
 
     return (
-        <div className="surveyDetails">
+        <div className="container">
             <h1>Survey - {id}</h1>
             <form onSubmit={handleSubmit}>
                 {
@@ -101,7 +101,7 @@ const SurveyDetails = () => {
                     })
                 }
 
-                <button type="submit">Submit</button>
+                <button type="submit" className='btn'>Submit</button>
 
             </form >
         </div >

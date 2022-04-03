@@ -31,7 +31,8 @@ export const LoginView = () => {
             .then(response => {
 
                 if (response.data.success == true) {
-                    alert("Success")
+                    //alert(response.data.token)
+                    //alert("Success")
                     localStorage.setItem('token', response.data.token);
                     window.location.replace("/");
                 }
@@ -42,7 +43,7 @@ export const LoginView = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit} action="#" className='login-container'>
+        <form onSubmit={handleSubmit} action="#" className='container'>
             <div className="form-group">
                 <label>Username:</label>
                 <input type="text" name="username" className="form-control"
@@ -55,7 +56,7 @@ export const LoginView = () => {
                     onChange={handleChange}
                     required />
             </div>
-            <button type='submit' className="buttonLog">
+            <button type='submit' className="btn">
                 Login
             </button>
             <div className="form-group signupBtn">
