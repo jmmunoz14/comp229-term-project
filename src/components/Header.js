@@ -27,7 +27,7 @@ const Header = () => {
             <ul>
                 <li>
                     <a href='/'>
-                        <img src={Logo} height={40} />
+                        <img src={Logo} height={20} />
                     </a>
                 </li>
                 <li>
@@ -42,7 +42,7 @@ const Header = () => {
                 </li>
                 {
                     loadingUser ? <li>
-                        <button onClick={handleSignout} >
+                        <button className='btn' onClick={handleSignout} >
                             Sign Out
                         </button>
                     </li> : <li>

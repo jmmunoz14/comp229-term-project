@@ -1,40 +1,57 @@
 import React, { useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom';
-
-const { v4: uuidv4 } = require('uuid')
-
-
+import { format } from 'date-fns'
 
 const CreateSurvey = () => {
 
-    //attributes
     const initialValues = {
         id: null,
-        surveyTitle: 'Survey title goes here',
+        surveyTitle: null,
         surveyType: {
             agreeDisagree: false,
             multipleChoice: false,
         }
     }
-
-    //Hooks => useState  
     const [surveyForm, setSurveyForm] = useState(initialValues)
-
-    //Hooks => useRef
     const surveyTitleFieldRef = useRef()
     const agreeDisagreeRadioButtonRef = useRef()
     const multipleChoiceRadioButtonRef = useRef()
-
-    //Hooks => useNavigate
     const navigate = useNavigate();
 
-    //functions - onChanges
+
+
+    function processSave() {
+
+        const agreeDisagreeValue = agreeDisagreeRadioButtonRef.current.checked
+        const multipleChoiceValue = multipleChoiceRadioButtonRef.current.checked
+        const startDate = new Date()
+        const endDate = new Date()
+        endDate.setDate(endDate.getDate() + 7) //adding 7 days
+
+        if (agreeDisagreeValue) {
+            return ({
+                "title": surveyForm.surveyTitle,
+                "type": "Agree or Disagree",
+                "status": "not active",
+                "startDate": format(startDate, 'mm-dd-yy'),
+                "endDate": format(endDate, 'mm-dd-yy')
+            })
+        }
+        if (multipleChoiceValue) {
+            return ({
+                "title": surveyForm.surveyTitle,
+                "type": "Multiple Choice",
+                "status": "not active",
+                "startDate": format(startDate, 'mm-dd-yy'),
+                "endDate": format(endDate, 'mm-dd-yy')
+            })
+        }
+    }
+
     function onChangeSurveyTitle() {
         const surveyTitleValue = surveyTitleFieldRef.current.value
         let data = surveyForm //this (surveyForm) is immutable
-
         data.surveyTitle = surveyTitleValue
-        //console.log(data)
         setSurveyForm(data)
     }
 
@@ -59,18 +76,13 @@ const CreateSurvey = () => {
 
     function onSubmitSurvey() {
 
-        let dataPreprocessing = surveyForm //this (surveyForm) is immutable
-        dataPreprocessing.id = uuidv4()
-
-        console.log(dataPreprocessing)
-        setSurveyForm(dataPreprocessing)
-
-        fetch('http://localhost:4000/surveys', {
+        fetch('https://surveymeanbackend.herokuapp.com/survey/add', {
             method: 'POST',
             headers: {
-                'Content-type': 'application/json'
+                'Content-type': 'application/json',
+                // 'authorization': localStorage.getItem('token')
             },
-            body: JSON.stringify(surveyForm)
+            body: JSON.stringify(processSave())
         })
 
         navigate('/')
@@ -117,8 +129,8 @@ const CreateSurvey = () => {
 
                 </div>
 
-                <button className="btn" onClick={onSubmitSurvey}>Submit</button>
-                <button className="btn" onClick={() => { navigate('/') }}>Cancel</button>
+                <button className="btn" type='button' onClick={onSubmitSurvey}>Submit</button>
+                <button className="btn" type='button' onClick={() => { navigate('/') }}>Cancel</button>
 
             </form>
         </div>

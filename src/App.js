@@ -10,6 +10,7 @@ import { LoginView } from './views/LoginView';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'
 import { SignupView } from './views/SignupView';
 import SurveyDetails from './views/SurveyDetails';
+import AddQuestions from './views/AddQuestionsView'
 
 
 function App() {
@@ -27,6 +28,8 @@ function App() {
         <Route path='/login' element={token ? <Navigate to="/" replace /> : <LoginView />} />
         <Route path='/signup' element={<SignupView />} />
         <Route path='/surveys/:id' element={<SurveyDetails />} />
+
+        <Route path='/addQuestions' element={<AddQuestions />} />
 
       </Routes>
       <Footer />
