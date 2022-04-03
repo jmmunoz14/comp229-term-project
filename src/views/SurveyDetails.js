@@ -2,14 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Auth from '../components/Auth'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 
 
 const SurveyDetails = () => {
     const { id } = useParams()
-
     const [surveyData, setSurveyData] = useState([])
-
     const [answers, setAnswers] = useState([])
+    const navigate = useNavigate();
+
 
     const handleChange = (i, event) => {
         const values = [...answers]
@@ -49,14 +51,13 @@ const SurveyDetails = () => {
         axios.post("http://surveymeanbackend.herokuapp.com/answer/attend/" + id, requestBody)
             .then(response => {
                 alert("Thank you for your answers!")
-                window.location.replace("/surveys");
-
+                //window.location.replace("/surveys");
+                navigate('/')
             })
             .catch(error => {
                 alert(error)
                 console.log(error)
             })
-
     }
 
     useEffect(() => {
