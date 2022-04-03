@@ -14,6 +14,11 @@ const SurveyElement = ({ surveyTitle, id, surveyType }) => {
         navigate('/editSurvey', { state: { surveyTitle, id, surveyType } })
     }
 
+    let addQuestions = () => {
+        navigate('/addQuestions', { state: { surveyTitle, id, surveyType } })
+    }
+
+
     return (
         <div key={id}>
             <table>
@@ -30,7 +35,14 @@ const SurveyElement = ({ surveyTitle, id, surveyType }) => {
                             <button
                                 className="btn"
                                 onClick={editSurvey}
-                            > Edit </button>
+                            >Edit</button>
+                        </td>
+
+                        <td align="right">
+                            <button
+                                className="btn"
+                                onClick={addQuestions}
+                            >Add</button>
                         </td>
 
                         <td>{surveyTitle}</td>
