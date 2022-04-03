@@ -37,7 +37,7 @@ const SurveyList = () => {
     }, [])
 
     return (
-        <div className="container">
+        <div className="container-surveylist">
             <h2>Surveys</h2>
             {surveyData.map((dataElement) => {
                 return (

@@ -20,7 +20,20 @@ body {
   border-radius: 5px;
 }
 
- 
+.container-surveylist {
+  max-width: 93%;
+  margin: 30px auto;
+  overflow: auto;
+  min-height: 400px;
+  border: 1px solid rgb(174, 174, 174);
+  padding: 30px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+
+}
+
+
 .container button {
   display: inline-block;
 
@@ -156,11 +169,7 @@ button {
   margin-bottom: 40px;
   display: inline-flex;
   flex-direction: column;
-}
-
-.table {
-  justify-content: center;
-}
+} 
 
 .form-control {
   margin: 20px 0;
@@ -338,14 +347,7 @@ input[type="email"] {
   height: auto;
 }
 
-html,
-body {
-  width: 100%;
-}
-
-table {
-  margin: 0 auto;
-}
+ 
 
 .register-btn-flexbox-container {
   display: flex;
