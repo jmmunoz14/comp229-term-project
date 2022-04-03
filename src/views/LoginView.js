@@ -46,22 +46,24 @@ export const LoginView = () => {
     return (
         <div className='container'>
             <form onSubmit={handleSubmit}>
-                <table className='center'>
-                    <tbody>
-                        <tr>
-                            <label>Username </label>
-                            <input type="text" name="username" className="form-control"
-                                onChange={handleChange}
-                                required />
-                        </tr>
-                        <tr>
-                            <label>Password</label>
-                            <input type="password" name="password" className="form-control"
-                                onChange={handleChange}
-                                required />
-                        </tr>
-                    </tbody>
-                </table>
+                <div className='register-btn-flexbox-container'>
+                    <table className='center'>
+                        <tbody>
+                            <tr>
+                                <label>Username </label>
+                                <input type="text" name="username" className="form-control"
+                                    onChange={handleChange}
+                                    required />
+                            </tr>
+                            <tr>
+                                <label>Password</label>
+                                <input type="password" name="password" className="form-control"
+                                    onChange={handleChange}
+                                    required />
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
                 <div className='register-btn-flexbox-container'> <button type='submit' className="btn">Login</button></div>
                 <div className='register-btn-flexbox-container'><a href="/signup"> Sign-up </a></div>
             </form>

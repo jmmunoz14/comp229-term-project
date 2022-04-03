@@ -55,38 +55,40 @@ export const SignupView = () => {
     return (
         <div className='container'>
             <form onSubmit={handleSubmit}>
-                <table className='center'>
-                    <tbody>
-                        <tr>
-                            <td><label>Username:</label></td>
-                            <td><input type="text" name="username" className="form-element" onChange={handleChange} required /></td>
-                        </tr>
-                        <tr>
-                            <td><label>E-mail:</label></td>
-                            <td><input type="email" name="email" className="form-control" onChange={handleChange} required /></td>
-                        </tr>
-                        <tr>
-                            <td><label>Password:</label></td>
-                            <td><input type="password" name="password" className="form-control" onChange={handleChange} required /></td>
-                        </tr>
-                        <tr>
-                            <td><label>Confirm Password:</label></td>
-                            <td><input type="password" name="confirmPassword" className="form-control" onChange={(e) => setConfirmPassword(e.target.value)} required /></td>
-                        </tr>
-                        <tr>
-                            <td><label>First Name:</label></td>
-                            <td><input type="text" name="firstName" className="form-control"
-                                onChange={handleChange}
-                                required /></td>
-                        </tr>
-                        <tr>
-                            <td><label>Last Name:</label></td>
-                            <td><input type="text" name="lastName" className="form-control"
-                                onChange={handleChange}
-                                required /></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div className='register-btn-flexbox-container'>
+                    <table className='center'>
+                        <tbody>
+                            <tr>
+                                <td><label>Username:</label></td>
+                                <td><input type="text" name="username" className="form-element" onChange={handleChange} required /></td>
+                            </tr>
+                            <tr>
+                                <td><label>E-mail:</label></td>
+                                <td><input type="email" name="email" className="form-control" onChange={handleChange} required /></td>
+                            </tr>
+                            <tr>
+                                <td><label>Password:</label></td>
+                                <td><input type="password" name="password" className="form-control" onChange={handleChange} required /></td>
+                            </tr>
+                            <tr>
+                                <td><label>Confirm Password:</label></td>
+                                <td><input type="password" name="confirmPassword" className="form-control" onChange={(e) => setConfirmPassword(e.target.value)} required /></td>
+                            </tr>
+                            <tr>
+                                <td><label>First Name:</label></td>
+                                <td><input type="text" name="firstName" className="form-control"
+                                    onChange={handleChange}
+                                    required /></td>
+                            </tr>
+                            <tr>
+                                <td><label>Last Name:</label></td>
+                                <td><input type="text" name="lastName" className="form-control"
+                                    onChange={handleChange}
+                                    required /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
                 <div className='register-btn-flexbox-container'>
                     <button type='submit' className="btn">Register</button>
                 </div>
