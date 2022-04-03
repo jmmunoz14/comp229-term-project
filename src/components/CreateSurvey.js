@@ -4,12 +4,6 @@ import { format } from 'date-fns'
 
 const CreateSurvey = () => {
 
-    const [surveyForm, setSurveyForm] = useState(initialValues)
-    const surveyTitleFieldRef = useRef()
-    const agreeDisagreeRadioButtonRef = useRef()
-    const multipleChoiceRadioButtonRef = useRef()
-    const navigate = useNavigate();
-
     const initialValues = {
         id: null,
         surveyTitle: null,
@@ -18,6 +12,12 @@ const CreateSurvey = () => {
             multipleChoice: false,
         }
     }
+    const [surveyForm, setSurveyForm] = useState(initialValues)
+    const surveyTitleFieldRef = useRef()
+    const agreeDisagreeRadioButtonRef = useRef()
+    const multipleChoiceRadioButtonRef = useRef()
+    const navigate = useNavigate();
+
 
 
     function processSave() {

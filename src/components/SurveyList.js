@@ -6,12 +6,9 @@ import SurveyElement from "./SurveyElement";
 const SurveyList = () => {
 
     const [surveyData, setSurveyData] = useState([])
-    //Hooks => useNavigate
     const navigate = useNavigate();
 
-    // Fetch surveysData
     const surveysData = async () => {
-        // const res = await fetch('http://localhost:4000/surveys')
         const res = await fetch('https://surveymeanbackend.herokuapp.com/survey/list_attend')
         const data = await res.json()
 
@@ -26,36 +23,7 @@ const SurveyList = () => {
             }
         })
 
-        // console.log(output)
-
-        //   [
-        //     {
-        // "id": "3046f572-d7e2-4447-a922-c4132f9ee8e5",
-        //     "surveyTitle": "Good places to live🍁",
-        //         "surveyType": {
-        //     "agreeDisagree": true,
-        //         "multipleChoice": false
-        //       }
-        //     },
-        //     {
-        //       "id": "4df712bd-67b6-457b-bf75-3f6037ade639",
-        //       "surveyTitle": "⭐⭐ Jailene is beautiful",
-        //       "surveyType": {
-        //         "agreeDisagree": true,
-        //         "multipleChoice": false
-        //       }
-        //     },
-        //     {
-        //       "id": "3f1d77b6-7006-472f-82c9-2ec41138625b",
-        //       "surveyTitle": "Sample",
-        //       "surveyType": {
-        //         "agreeDisagree": true,
-        //         "multipleChoice": false
-        //       }
-        //     }
-        //   ],
-
-         return output
+        return output
     }
 
 
