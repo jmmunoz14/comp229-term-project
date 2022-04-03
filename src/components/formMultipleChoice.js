@@ -48,7 +48,7 @@ const MultipleChoice = ({ surveyTitle, surveyId }) => {
         axios.post(`http://surveymeanbackend.herokuapp.com/question/add/${surveyId}`, body, {
             headers: headers
         }).then(res => {
-            alert("ok")
+            //alert("ok")
             navigate('/surveys')
         }).catch(error => {
             alert(error)
