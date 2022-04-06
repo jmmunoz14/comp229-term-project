@@ -11,6 +11,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import { SignupView } from './views/SignupView';
 import SurveyDetails from './views/SurveyDetails';
 import AddQuestions from './views/AddQuestionsView'
+import PreviewSurvey from './views/PreviewSurvey'
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route path='/login' element={token ? <Navigate to="/" replace /> : <LoginView />} />
         <Route path='/signup' element={<SignupView />} />
         <Route path='/surveys/:id' element={token ? <SurveyDetails /> : <Navigate to="/" replace />} />
+        <Route path='/surveys/preview/:id' element={token ? <PreviewSurvey /> : <Navigate to="/" replace />} />
         <Route path='/addQuestions' element={token ? <AddQuestions /> : <Navigate to="/" replace />} />
 
       </Routes>

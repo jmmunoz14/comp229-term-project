@@ -6,6 +6,7 @@ const SurveyElement = ({ surveyTitle, id, surveyType }) => {
     let takeSurvey = () => { navigate('/surveys/' + id) }
     let editSurvey = () => { navigate('/editSurvey', { state: { surveyTitle, id, surveyType } }) }
     let addQuestions = () => { navigate('/addQuestions', { state: { surveyTitle, id, surveyType } }) }
+    let previewQuestions = () => { navigate('/surveys/preview/'+ id, { state: { surveyTitle, id, surveyType } }) }
 
     return (
         <div key={id}>
@@ -16,6 +17,7 @@ const SurveyElement = ({ surveyTitle, id, surveyType }) => {
                         <td><button className="btn" onClick={editSurvey}>Edit</button></td>
                         <td><button className="btn-add" onClick={addQuestions}>Add</button></td>
                         <td style={{ justifyContent: 'flex-end' }}><button className="btn-delete">Delete</button></td>
+                        <td style={{ justifyContent: 'flex-end' }} onClick={previewQuestions} ><button className="btn-preview">Preview</button></td>
 
                         {surveyType.agreeDisagree &&
                             <td>{surveyTitle} - Agree or Disagree</td>
