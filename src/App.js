@@ -21,15 +21,14 @@ function App() {
       <Header />
       <Routes>
         <Route exact path='/' element={<Home />} />
-        <Route path='/surveys' element={<ListSurveysView />} />
+        <Route path='/surveys' element={token ? <ListSurveysView /> : <Navigate to="/" replace />} />
         <Route path='/createSurvey' element={token ? <CreateSurveyView /> : <Navigate to="/" replace />} />
-        <Route path='/editSurvey' element={<EditSurveyView />} />
+        <Route path='/editSurvey' element={token ? <EditSurveyView /> : <Navigate to="/" replace />} />
         <Route path='/analytics' element={<AnalyticsView />} />
         <Route path='/login' element={token ? <Navigate to="/" replace /> : <LoginView />} />
         <Route path='/signup' element={<SignupView />} />
-        <Route path='/surveys/:id' element={<SurveyDetails />} />
-
-        <Route path='/addQuestions' element={<AddQuestions />} />
+        <Route path='/surveys/:id' element={token ? <SurveyDetails /> : <Navigate to="/" replace />} />
+        <Route path='/addQuestions' element={token ? <AddQuestions /> : <Navigate to="/" replace />} />
 
       </Routes>
       <Footer />
