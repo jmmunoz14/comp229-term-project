@@ -76,6 +76,20 @@ body {
   font-family: inherit;
 }
 
+.btn-preview {
+  display: inline-block;
+  background: #dab204;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: inherit;
+}
+
 .btn-add {
   display: inline-block;
   background: #179f37;
