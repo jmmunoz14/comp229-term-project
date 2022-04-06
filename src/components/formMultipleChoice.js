@@ -45,7 +45,7 @@ const MultipleChoice = ({ surveyTitle, surveyId }) => {
             "options": `${formFields.optionA},${formFields.optionB},${formFields.optionC}`
         }
 
-        axios.post(`http://surveymeanbackend.herokuapp.com/question/add/${surveyId}`, body, {
+        axios.post(`http://surveymeanbackend.herokuapp.com/question/addsingle/${surveyId}`, body, {
             headers: headers
         }).then(res => {
             //alert("ok")
