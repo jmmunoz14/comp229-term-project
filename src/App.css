@@ -369,3 +369,6 @@ input[type="email"] {
   align-items: center;
   align-content: center;
 }
+.chart {
+  width : 30%;
+}
