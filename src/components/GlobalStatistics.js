@@ -6,8 +6,6 @@ import { Pie } from 'react-chartjs-2';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-
-
 export default function GlobalStatistics() {
 
     //states
@@ -16,7 +14,7 @@ export default function GlobalStatistics() {
     const [qtyLabel_MC, setQtyLabel_MC] = useState(0);
     const [pct_AD, setPct_AD] = useState(0);
     const [pct_MC, setPct_MC] = useState(0);
-
+    const [dataStats, setDataStats] = useState([]);
 
     //chart data
     const data = {
@@ -39,85 +37,46 @@ export default function GlobalStatistics() {
         ],
     }
 
-    const sample = [{
-        _id: "12345",
-        type: "Multiple Choice",
-        numberOfResponses: 3
-    }, {
-        _id: "123456",
-        type: "Multiple Choice",
-        numberOfResponses: 4
-    },
-    {
-        _id: "6789",
-        type: "Agree or Disagree",
-        numberOfResponses: 2
-    }, {
-        _id: "12345",
-        type: "Multiple Choice",
-        numberOfResponses: 3
-    }, {
-        _id: "12345",
-        type: "Multiple Choice",
-        numberOfResponses: 3
-    }, {
-        _id: "12345",
-        type: "Multiple Choice",
-        numberOfResponses: 3
-    }, {
-        _id: "12345",
-        type: "Multiple Choice",
-        numberOfResponses: 3
-    }, {
-        _id: "12345",
-        type: "Multiple Choice",
-        numberOfResponses: 3
-    }, {
-        _id: "12345",
-        type: "Multiple Choice",
-        numberOfResponses: 3
-    }]
 
     //site: https://www.w3schools.com/react/react_useeffect.asp
     useEffect(() => {
-        //Runs only on the first render
-        helper(sample)
+        //Runs only on the first render      
+        axios.get(`http://surveymeanbackend.herokuapp.com/answer/report`)
+            .then((res) => {
+                setDataStats(res.data)
+            })
     }, []);
 
-    function helper(s) {
+    //site: https://www.w3schools.com/react/react_useeffect.asp
+    useEffect(() => {
+        console.log(dataStats)
+        helper(dataStats)
+    }, [dataStats]);
+
+
+    function helper(stats) {
 
         //count total
-        if (s) {
-            setQtyTotal(s.length)
+        if (stats) {
+            setQtyTotal(stats.length)
 
             //count ad
-            const arr_ad = s.filter(e => { return e.type === "Agree or Disagree" })
+            const arr_ad = stats.filter(e => { return e.type === "Agree or Disagree" })
             setQtyLabel_AD(arr_ad.length)
 
             //count mc
-            const arr_mc = s.filter(e => { return e.type === "Multiple Choice" })
+            const arr_mc = stats.filter(e => { return e.type === "Multiple Choice" })
             setQtyLabel_MC(arr_mc.length)
 
             //set pertentages
             const TOTAL_100 = 100
-            const P_AD = Math.round(qtyLabel_AD / qtyTotal * 100)
+            const P_AD = Math.round(arr_ad.length / stats.length * 100)
             const P_MC = TOTAL_100 - P_AD
             setPct_AD(P_AD)
             setPct_MC(P_MC)
         }
     }
 
-    // const axiosGet = async () => {
-
-    //     const url = 'https://surveymeanbackend.herokuapp.com/'
-    //     try {
-    //         const resp = await axios.get(url)
-
-    //     } catch (err) {
-    //         console.error(err)
-    //     }
-    // }
-    //axiosGet()
 
     return (
         <div>
@@ -130,4 +89,5 @@ export default function GlobalStatistics() {
 
         </div>
     )
+
 }
