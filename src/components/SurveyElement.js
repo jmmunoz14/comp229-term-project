@@ -29,7 +29,7 @@ const SurveyElement = ({ surveyTitle, id, surveyType }) => {
 
     axios
       .delete(
-        `http://surveymeanbackend.herokuapp.com/survey/delete/${id}`,
+        `https://surveymeanbackend.herokuapp.com/survey/delete/${id}`,
         body,
         {
           headers: headers,
