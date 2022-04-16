@@ -1,28 +1,28 @@
 import React, { useState, useRef } from 'react'
-import { useNavigate, useLocation } from 'react-router-dom';
-import MultipleChoice from '../components/FormMultipleChoice';
-
+import { useNavigate, useLocation } from 'react-router-dom'
+import MultipleChoice from '../components/formMultipleChoice'
+import AgreeDisagree from '../components/formAgreeDisagree'
 
 export default function AnalyticsView() {
-    const location = useLocation();
+  const location = useLocation()
 
+  console.log(location.state)
 
-    console.log(location.state)
+  return (
+    <div>
+      {location.state.surveyType.agreeDisagree && (
+        <AgreeDisagree
+          surveyTitle={location.state.surveyTitle}
+          surveyId={location.state.id}
+        />
+      )}
 
-    return (
-        <div>
-            {location.state.surveyType.agreeDisagree &&
-                <div>
-                    renderiza agree disagree form
-                </div>
-            }
-
-            {location.state.surveyType.multipleChoice &&
-                <MultipleChoice 
-                surveyTitle={location.state.surveyTitle}
-                surveyId={location.state.id}                
-                />
-            }
-        </div>
-    )
+      {location.state.surveyType.multipleChoice && (
+        <MultipleChoice
+          surveyTitle={location.state.surveyTitle}
+          surveyId={location.state.id}
+        />
+      )}
+    </div>
+  )
 }
