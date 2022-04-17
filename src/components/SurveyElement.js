@@ -55,11 +55,12 @@ const SurveyElement = ({ surveyTitle, id, surveyType }) => {
                 Take{' '}
               </button>
             </td>
+            {/* //! HIDE BUTTTON 
             <td>
               <button className="btn" onClick={editSurvey}>
                 Edit
               </button>
-            </td>
+            </td> */}
             <td>
               <button className="btn-add" onClick={addQuestions}>
                 Add
