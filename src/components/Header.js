@@ -25,36 +25,23 @@ const Header = () => {
     return (
         <div className='horizontal-navbar'>
             <ul>
-                <li>
-                    <a href='/'>
-                        <img src={Logo} height={20} />
-                    </a>
-                </li>
-                <li>
-                    <a href='/'>
-                        Home
-                    </a>
-                </li>
-                <li>
-                    <a href='/surveys'>
-                        Surveys
-                    </a>
-                </li>
-                {
-                    loadingUser ? <li>
-                        <button className='btn' onClick={handleSignout} >
-                            Sign Out
-                        </button>
-                    </li> : <li>
-                        <a href='/login'>
-                            Login
-                        </a>
+                <li><a href='/'><img src={Logo} height={20} /></a> </li>
+                <li><a href='/'> Home</a></li>
+                <li><a href='/surveys'> Surveys</a></li>
+                {loadingUser ?
+                    <li>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td><button className='btn' onClick={handleSignout}>Sign Out</button></td>
+                                    <td><a>{`Hi, ${localStorage.getItem('username')}`}</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </li>
-                }
-
+                    : <li><a href='/login'>Login</a></li>}
             </ul>
         </div>
-
     );
 }
 

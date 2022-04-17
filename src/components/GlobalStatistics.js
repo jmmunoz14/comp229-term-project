@@ -34,7 +34,7 @@ export default function GlobalStatistics() {
   useEffect(() => {
     //Runs only on the first render
     axios
-      .get(`https://surveymeanbackend.herokuapp.com/answer/report`)
+      .get(`https://surveymeanbackend.herokuapp.com/survey/list_attend`)
       .then((res) => {
         setDataStats(res.data)
       })
@@ -42,11 +42,10 @@ export default function GlobalStatistics() {
 
   //site: https://www.w3schools.com/react/react_useeffect.asp
   useEffect(() => {
-    console.log(dataStats)
-    helper(dataStats)
+    computeStatistics(dataStats)
   }, [dataStats])
 
-  function helper(stats) {
+  function computeStatistics(stats) {
     //count total
     if (stats) {
       setQtyTotal(stats.length)
