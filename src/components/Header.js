@@ -18,8 +18,8 @@ const Header = () => {
 
     const handleSignout = () => {
         localStorage.removeItem('token')
+        localStorage.removeItem('username')
         window.location.replace("/");
-
     }
 
     return (

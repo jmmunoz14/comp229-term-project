@@ -30,6 +30,7 @@ export const LoginView = () => {
           //alert(response.data.token)
           //alert("Success")
           localStorage.setItem('token', response.data.token)
+          localStorage.setItem('username', form.username)
           window.location.replace('/')
         }
       })
