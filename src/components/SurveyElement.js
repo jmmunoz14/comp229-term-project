@@ -20,12 +20,16 @@ const SurveyElement = ({ surveyTitle, id, surveyType }) => {
 
   function deleteSurvey() {
     const token = localStorage.getItem('token')
+    const currentUser = localStorage.getItem('username')
     const headers = {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     }
 
-    const body = {}
+    //! sending current user to the backend
+    const body = {
+      currentUser: currentUser
+    }
 
     axios
       .delete(
