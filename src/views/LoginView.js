@@ -31,6 +31,7 @@ export const LoginView = () => {
           //alert("Success")
           localStorage.setItem('token', response.data.token)
           localStorage.setItem('username', form.username)
+
           window.location.replace('/')
         }
       })
