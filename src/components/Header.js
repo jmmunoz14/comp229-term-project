@@ -34,7 +34,7 @@ const Header = () => {
                             <tbody>
                                 <tr>
                                     <td><button className='btn' onClick={handleSignout}>Sign Out</button></td>
-                                    <td><a>{`Hi, ${localStorage.getItem('username')}`}</a></td>
+                                    <td><a href='/profile'>{`Hi, ${localStorage.getItem('username')}`}</a></td>
                                 </tr>
                             </tbody>
                         </table>
