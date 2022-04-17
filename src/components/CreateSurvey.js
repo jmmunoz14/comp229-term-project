@@ -36,7 +36,7 @@ const CreateSurvey = () => {
         status: 'not active',
         startDate: format(startDate, 'mm-dd-yy'),
         endDate: format(endDate, 'mm-dd-yy'),
-        created_by: username,
+        username: username,
       }
     }
     if (multipleChoiceValue) {
@@ -46,7 +46,7 @@ const CreateSurvey = () => {
         status: 'not active',
         startDate: format(startDate, 'mm-dd-yy'),
         endDate: format(endDate, 'mm-dd-yy'),
-        created_by: username,
+        username: username,
       }
     }
   }
