@@ -81,7 +81,7 @@ const CreateSurvey = () => {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
-        'authorization': localStorage.getItem('token')
+        Authorization: localStorage.getItem('token'),
       },
       body: JSON.stringify(processSave()),
     })
