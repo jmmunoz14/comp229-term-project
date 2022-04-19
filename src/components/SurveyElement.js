@@ -19,22 +19,20 @@ const SurveyElement = ({ surveyTitle, id, surveyType }) => {
   }
 
   function deleteSurvey() {
-    const token = localStorage.getItem('token')
     const currentUser = localStorage.getItem('username')
+
+    const token = localStorage.getItem('token')
+
     const headers = {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token}` 
     }
 
-    //! sending current user to the backend
-    const body = {
-      currentUser: currentUser
-    }
-
+    console.log(headers)
     axios
       .delete(
         `https://surveymeanbackend.herokuapp.com/survey/delete/${id}`,
-        body,
+
         {
           headers: headers,
         },
