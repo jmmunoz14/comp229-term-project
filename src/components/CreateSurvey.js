@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { format } from 'date-fns'
+import axios from 'axios'
 
 const CreateSurvey = () => {
   const initialValues = {
@@ -77,16 +78,31 @@ const CreateSurvey = () => {
   }
 
   function onSubmitSurvey() {
-    fetch('https://surveymeanbackend.herokuapp.com/survey/add', {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-        Authorization: localStorage.getItem('token'),
-      },
-      body: JSON.stringify(processSave()),
-    })
+    const token = localStorage.getItem('token')
 
-    navigate('/')
+    const headers = {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    }
+
+    const body = processSave()
+
+    axios
+      .post(
+        `https://surveymeanbackend.herokuapp.com/survey/add`,
+        body,
+        {
+          headers: headers,
+        },
+      )
+      .then((res) => {
+       
+        navigate('/')
+      })
+      .catch((error) => {
+        alert(error)
+        console.log(error)
+      })
   }
 
   return (
